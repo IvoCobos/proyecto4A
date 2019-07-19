@@ -1,0 +1,63 @@
+
+Crear base de datos POSTGRESQL
+DESARROLLO.-
+
+0.- Crear usuario prueba
+1.- Crear DB con script ./database/db.sql
+2.- Crear Schemas con script ./database/db.sql
+
+En la consola dentro de la carpera server:
+
+3.- knex migrate:latest 
+4.- knex seed:run 
+
+
+PRODUCCIÓN.-
+
+    En desarrollo.
+
+
+CREAR TABLAS EN UN NUEVO SCHEMA.-
+
+1.- knex migrate:make nombreSchema
+
+el nuevo archivo se crea en el directorio ./migratios
+
+
+CREAR TABLAS EN UN SCHEMA EXISTENTE.-
+
+busque el archivo de la schema que necesita y agregue la nueva tabla, no olvide agregar el dropTableIfExists
+
+
+
+CREAR DATOS PARA UNA TABLA.-
+
+##
+01 = sesion
+02 = estudiante
+03 = docente
+04 = sistema
+05 = auditoria
+06 = catalogo
+
+1.- knex seed:make ##nombreTabla
+
+
+CREAR RESTRICCIONES PK FK.-
+Verifique que no exite el archivo del Schema donde se encuentra la tabla, de existir incluya en ese archivo.
+Sí no exite:
+
+1.- knex seed:make 9##restrictNombreSchema
+
+
+
+
+
+
+
+
+
+
+
+
+

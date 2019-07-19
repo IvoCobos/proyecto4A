@@ -1,0 +1,29 @@
+/* CREAR USUARIO */
+CREATE USER proyecto PASSWORD 'luis';
+ALTER ROLE proyecto WITH SUPERUSER;
+ALTER ROLE proyecto WITH LOGIN;
+
+/* CREAR DB POSGRESQL*/
+
+CREATE DATABASE "CuchitrilTatto"
+    WITH 
+    OWNER = proyecto
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'es_ES.UTF-8'
+    LC_CTYPE = 'es_ES.UTF-8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+/* CREAR SESIONES */
+
+CREATE SCHEMA IF NOT EXISTS administrador AUTHORIZATION proyecto;
+/*CREATE SCHEMA IF NOT EXISTS cliente AUTHORIZATION proyecto;
+CREATE SCHEMA IF NOT EXISTS tatuaje AUTHORIZATION proyecto;
+CREATE SCHEMA IF NOT EXISTS sistema AUTHORIZATION proyecto;
+CREATE SCHEMA IF NOT EXISTS auditoria AUTHORIZATION proyecto;
+CREATE SCHEMA IF NOT EXISTS catalogo AUTHORIZATION proyecto;*/
+
+SET search_path TO
+pg_catalog, public, administrador;
+
+GRANT PRIVILEGES ON DATABASE CuchitrilTatto TO proyecto;
